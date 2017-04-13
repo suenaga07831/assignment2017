@@ -10,16 +10,17 @@ import sys
 args = sys.argv
 
 #define filename/filemode
-if len(args) == 2 :
-    fn = args[1]
+if len(args) == 1 :
+    fn = raw_input("please filename:: ")
     fm = "r"
-
+        
 else :
     print("please write by this format")
-    print("grep.py <import file>")
+    print("freq.py")
     quit()
     
 #open file
+print fn
 f = open(fn,fm)
 
 #combine in 1 line
