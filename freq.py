@@ -11,7 +11,7 @@ args = sys.argv
 
 #define filename/filemode
 if len(args) == 1 :
-    fn = raw_input("please filename:: ")
+    fn = input("please filename: ")
     fm = "r"
         
 else :
@@ -20,37 +20,31 @@ else :
     quit()
     
 #open file
-print fn
 f = open(fn,fm)
 
 #combine in 1 line
-disp =""
-dict = {}
+disp=""
+dic = {}
+
 for i in f:
     disp += i
+    disp = disp.rstrip("\n")
 
 #list up
 disp = disp.split(" ")
 
-#register dict
-cnt = 0
+#register dic
 for i in disp:
-    i = i.strip("\n")
-    disp[cnt] = i
-    cnt += 1
-
-    dict[i] = 0
-    
-#count
-for word in disp:
-    for key in dict.iterkeys():
-        if key == word:
-            dict[key] += 1
-            break
-
+    if i in dic:
+        dic[i] += 1
+    else:
+        dic[i] = 1
+        
 #sort and output
-for key,value in sorted(dict.items() , key = lambda x:x[1],reverse = True):
-    print value , key
+for key , value in sorted(dic.items() , key = lambda x:x[1] ):
+    print(str(value) + key)
+
+
 
 #close file
 f.close()
